@@ -156,6 +156,7 @@ def test_the_start_worker_reconciles_the_profile_env_before_the_daemon_boots(mon
     monkeypatch.setattr("hindsight_hermes._build_embedded_profile_env", lambda cfg: {"FRESH": "1"})
     monkeypatch.setattr("hindsight_hermes._may_rewrite_profile_env", lambda cfg: True)
     monkeypatch.setattr("hindsight_hermes._embedded_profile_env_path", lambda cfg: tmp_path / "p.env")
+
     def _fake_write(path, content):
         order.append("wrote env")
         Path(path).write_text(content)
